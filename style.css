@@ -36,8 +36,7 @@ h3 {
     color: #f77;
 }
 
-#credits {
-    margin-top: 2rem;
+#credits, #share {
     text-align: center;
 }
 
