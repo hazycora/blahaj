@@ -675,7 +675,8 @@ async function get(path) {
     } catch (error) {
         document.getElementById('error').style.display = 'block'
         document.getElementById('error-message').innerText = error.message
-        document.getElementById('listings').remove()
+        if (document.getElementById('listings')) document.getElementById('listings').remove()
+        throw error
     }
 }
 
@@ -752,7 +753,14 @@ async function loadCountryListings(countrycode) {
 
     let listingsContainer = document.createElement('div')
 
-    let listings = (await get(ikeaData[countrycode].apiUrl)).availabilities.map(e => parseStock(e, countrycode))
+    let dat
+    try {
+        dat = await get(ikeaData[countrycode].apiUrl)
+    } catch (error) {
+        throw error
+    }
+
+    let listings = dat.availabilities.map(e => parseStock(e, countrycode))
 
     listings.sort((a, b) => {
         return b.quantity - a.quantity;
@@ -787,7 +795,11 @@ async function start() {
                 }
             })
         }
-        loadCountryListings(countryCodes[i])
+        try {
+            loadCountryListings(countryCodes[i])
+        } catch (error) {
+            return
+        }
     }
     // log so i can replace it if i add more things
     if (debug) console.log(JSON.stringify(ikeaData, null, 2))
