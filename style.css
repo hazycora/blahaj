@@ -36,7 +36,7 @@ h3 {
     color: #f77;
 }
 
-#credits, #share {
+#credits, #share, #github { /* I should use a class, obviously, but I'm editing this with the GitHub web editor so I can only edit one file at a time lollll */
     text-align: center;
 }
 
