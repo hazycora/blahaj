@@ -1,0 +1,24 @@
+{
+  "name": "blahaj",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "vite dev",
+    "build": "node get-store-data.js && vite build",
+    "update-stores": "node get-store-data.js",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-static": "^1.0.1",
+    "@sveltejs/kit": "^1.0.0",
+    "autoprefixer": "^10.4.7",
+    "json-6": "^1.1.4",
+    "json-z": "^3.3.2",
+    "postcss": "^8.4.14",
+    "postcss-load-config": "^4.0.1",
+    "svelte": "^3.54.0",
+    "svelte-preprocess": "^4.10.7",
+    "vite": "^4.0.0"
+  },
+  "type": "module"
+}
