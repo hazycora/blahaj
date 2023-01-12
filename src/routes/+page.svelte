@@ -48,6 +48,28 @@
 	}
 </script>
 
+<svelte:head>
+	<title>BLÅHAJ Radar</title>
+    <meta name="title" content="BLÅHAJ Radar">
+    <meta name="description" content="Locate IKEA locations that have BLÅHAJ stock">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hazy.gay/blahaj">
+    <meta property="og:title" content="BLÅHAJ Radar">
+    <meta property="og:description" content="Locate IKEA locations that have BLÅHAJ stock">
+    <meta property="og:image" content="https://hazy.gay/blahaj/blobhaj.svg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="https://hazy.gay/blahaj">
+    <meta property="twitter:site" content="@hazycora">
+    <meta property="twitter:creator" content="@hazycora">
+    <meta property="twitter:title" content="BLÅHAJ Radar">
+    <meta property="twitter:description" content="Locate IKEA locations that have BLÅHAJ stock">
+    <meta property="twitter:image" content="https://hazy.gay/blahaj/blobhaj.svg">
+</svelte:head>
+
 <div class="layout">
 	<div class="hero">
 		<div class="hero-message">
