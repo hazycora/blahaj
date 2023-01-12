@@ -532,7 +532,7 @@ let ikeaData = [
 		},
 		cantCheckUrls: true,
 		cantCheckAutomatically: true,
-		cantCheckAutomaticallyMessage: "PLACEHOLDER's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
+		cantCheckAutomaticallyMessage: "Estonia's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
     },
     {
 		name: "Turkey",
