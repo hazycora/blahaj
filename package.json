@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "node get-store-data.js && vite build",
+    "build-no-update": "vite build",
     "update-stores": "node get-store-data.js",
     "preview": "vite preview"
   },
