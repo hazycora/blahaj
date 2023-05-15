@@ -2,11 +2,11 @@
 	import { fly } from 'svelte/transition'
 	export let listing
 	export let delay = 0
-	let positive = listing.quantity&&listing.quantity > 0
+	let positive = listing.quantity && listing.quantity > 0
 	let restockRange
 	let message = listing.message
 	if (!message) {
-		if (listing.quantity===1) {
+		if (listing.quantity === 1) {
 			message = `${listing.quantity} shark`
 		} else {
 			message = `${listing.quantity} sharks`
@@ -16,7 +16,10 @@
 	if (listing.nextRestock) {
 		let dateEarliest = formatDate(listing.nextRestock.earliestDate)
 		let dateLatest = formatDate(listing.nextRestock.latestDate)
-		restockRange = (dateEarliest === dateLatest) ? dateEarliest : `${dateEarliest}-${dateLatest}`
+		restockRange =
+			dateEarliest === dateLatest
+				? dateEarliest
+				: `${dateEarliest}-${dateLatest}`
 	}
 
 	function formatDate(str) {
@@ -25,11 +28,19 @@
 	}
 </script>
 
-<div in:fly={{delay, x: -100, duration: 300}} out:fly={{delay, 0: -100, duration: 300}} class="listing" class:positive={positive} class:negative={!positive}>
+<div
+	in:fly={{ delay, x: -100, duration: 300 }}
+	out:fly={{ delay, 0: -100, duration: 300 }}
+	class="listing"
+	class:positive
+	class:negative={!positive}
+>
 	<h3>{listing.store.name}</h3>
 	<p class="address">{listing.store.address}</p>
 	<p class="quantity">{message}</p>
 	{#if listing.nextRestock}
-		<p class="restock-date">Restocking {listing.nextRestock.quantity} sharks on {restockRange}</p>
+		<p class="restock-date">
+			Restocking {listing.nextRestock.quantity} sharks on {restockRange}
+		</p>
 	{/if}
 </div>

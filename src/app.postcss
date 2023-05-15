@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
 	box-sizing: border-box;
 }
 
@@ -19,7 +21,12 @@ body {
 	font-family: var(--font-family);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	margin: 0;
 }
 
@@ -57,7 +64,8 @@ img {
 	max-width: 100%;
 }
 
-ol, ul {
+ol,
+ul {
 	padding: 0;
 	margin: 0;
 }
@@ -118,7 +126,14 @@ button {
 	max-width: 800px;
 	object-fit: cover;
 	object-position: left 60%;
-	mask-image: linear-gradient(100deg, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.01) 15%, rgba(0, 0, 0, 0.05) 20%, rgba(0, 0, 0, 0.5) 60%, white 100%);
+	mask-image: linear-gradient(
+		100deg,
+		rgba(0, 0, 0, 0) 10%,
+		rgba(0, 0, 0, 0.01) 15%,
+		rgba(0, 0, 0, 0.05) 20%,
+		rgba(0, 0, 0, 0.5) 60%,
+		white 100%
+	);
 }
 
 .blahaj-select-buttons {
@@ -267,7 +282,7 @@ button {
 	content: '↴';
 	transition: transform 200ms;
 	transition-delay: 50ms;
-	transition-timing-function: cubic-bezier(.61,.76,.34,1.73);
+	transition-timing-function: cubic-bezier(0.61, 0.76, 0.34, 1.73);
 }
 
 .country-listings-open-button:hover h2::after {

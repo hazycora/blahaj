@@ -1,0 +1,17 @@
+.DS_Store
+node_modules
+/docs
+/build
+/.svelte-kit
+/package
+.env
+.env.*
+!.env.example
+
+# ikea store data (preserve minifying)
+/src/lib/store-data.js
+
+# Ignore files for PNPM, NPM and YARN
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
