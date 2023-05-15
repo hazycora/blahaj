@@ -8,6 +8,8 @@
 	let loaded = false
 	let isOpen = false
 
+	let available = typeof countryData.itemIds?.[itemType] != 'undefined'
+
 	function parseStock(availability) {
 		let store = countryData.stores.find(e => {
 			return e.value === availability.classUnitKey.classUnitCode
@@ -77,23 +79,43 @@
 	}
 </script>
 
-<div class="country-listings" class:baby-blahaj={itemType === 'baby'}>
-	<button class="country-listings-open-button" on:click={onClick}>
+<div
+	class="country-listings"
+	class:unavailable={!available}
+	id="country-listing-{btoa(countryData.name)}"
+	class:baby-blahaj={itemType === 'baby'}
+>
+	<button
+		aria-expanded={isOpen}
+		aria-controls="country-listing-{btoa(countryData.name)}"
+		class="country-listings-open-button"
+		on:click={onClick}
+	>
 		<h2 class="country-listings-name-wrapper">
 			<span class="country-listings-emoji" aria-hidden="true"
 				>{countryData.emoji}</span
 			>
 			<span>{countryData.name}</span>
+			{#if countryData.cantCheckAutomatically}
+				<span class="country-listings-name-warning">(broken)</span>
+			{/if}
 		</h2>
 	</button>
 	{#if isOpen}
 		<div class="country-listings-content" out:slide={{ duration: 100 }}>
-			{#if countryData.cantCheckAutomatically}
+			{#if !available}
+				<p>
+					{itemType} BLÅHAJ seem to not be sold in {countryData.abbrv ??
+						countryData.name}
+				</p>
+			{:else if countryData.cantCheckAutomatically}
 				<p>{countryData.cantCheckAutomaticallyMessage}</p>
-				<a href={countryData.itemUrls[itemType]}
-					>See the listings for BLÅHAJ in {countryData.abbrv ??
-						countryData.name}</a
-				>
+				{#if countryData.itemUrls?.[itemType]}
+					<a href={countryData.itemUrls[itemType]}
+						>See the listings for BLÅHAJ in {countryData.abbrv ??
+							countryData.name}</a
+					>
+				{/if}
 			{:else}
 				<a href={countryData.itemUrls[itemType]}
 					>See the listings for BLÅHAJ in {countryData.abbrv ??
