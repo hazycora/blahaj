@@ -1,5 +1,5 @@
 import fs from 'fs'
-import JSON6 from 'json-6'
+import fetch from 'node-fetch'
 
 let ikeaData = [
 	{
@@ -645,95 +645,77 @@ let ikeaData = [
 	}
 ]
 
-async function getProperUrl(url) {
-	let html = await (await fetch(url)).text()
-	return html.match(
-		/<meta (?:[^<>]*?)?property="og:url" content="(.*?)"\/?>/
-	)[1]
-}
+for (let [i, country] of Object.entries(ikeaData)) {
+	const percentage = (((parseInt(i) + 1) / ikeaData.length) * 100).toFixed(2)
 
-async function getStoresByCountry(countryData) {
-	if (countryData.cantCheckUrls) return countryData
-
-	const itemPageHtml = await (
-		await fetch(
-			`https://www.ikea.com/${countryData.urlCode}/p/blahaj-${
-				countryData.itemIds.original ?? countryData.itemIds.baby
-			}/`
+	if (country.cantCheckUrls) {
+		console.log(
+			`${percentage}% complete  \tskipping all checks for ${
+				country.abbrv ?? country.name
+			} (can't check urls)`
 		)
-	).text()
+		continue
+	}
 
-	let firstItemUrl = itemPageHtml.match(
-		/<meta (?:[^<>]*?)?property="og:url" content="(.*?)"\/?>/
-	)[1]
+	ikeaData[i].itemUrls = {}
 
-	let itemUrls = {}
-	if (countryData.itemIds.original) {
-		itemUrls.original = firstItemUrl
-		if (countryData.itemIds.baby)
-			itemUrls.baby = await getProperUrl(
-				`https://www.ikea.com/${countryData.urlCode}/p/blahaj-${countryData.itemIds.baby}/`
+	if (country.itemIds.original) {
+		const itemPageHtml = await (
+			await fetch(
+				`https://www.ikea.com/${country.urlCode}/p/blahaj-${country.itemIds.original}/`
 			)
-	} else {
-		itemUrls.baby = firstItemUrl
+		).text()
+		ikeaData[i].itemUrls.original = itemPageHtml.match(
+			/<meta (?:[^<>]*?)?property="og:url" content="(.*?)"\/?>/
+		)[1]
+	}
+	if (country.itemIds.baby) {
+		const itemPageHtml = await (
+			await fetch(
+				`https://www.ikea.com/${country.urlCode}/p/blahaj-${country.itemIds.baby}/`
+			)
+		).text()
+		ikeaData[i].itemUrls.baby = itemPageHtml.match(
+			/<meta (?:[^<>]*?)?property="og:url" content="(.*?)"\/?>/
+		)[1]
 	}
 
-	if (countryData.cantCheckAutomatically) {
-		return {
-			...countryData,
-			itemUrls
-		}
-	}
-
-	let mainJsUrl = `https://www.ikea.com/${
-		countryData.urlCode
-	}/products/javascripts/${
-		itemPageHtml.match(/\/products\/javascripts\/(range-pip-main\..*?)">/)[1]
-	}`
-	let pipMainJs = await (await fetch(mainJsUrl)).text()
-	let matches = pipMainJs.match(/javascripts\/"\+\(({.*?})\[e\][^{]*?({.*?})/m)
-	let jsFileNames = JSON6.parse(matches[1])
-	let jsFileHashes = JSON6.parse(matches[2])
-	let jsFiles = []
-	for (let i of Object.keys(jsFileNames)) {
-		jsFiles.push(`${jsFileNames[i]}.${jsFileHashes[i]}.js`)
-	}
-	let stockcheckFilename = jsFiles.find(e => e.startsWith('range-stockcheck.'))
-	if (!stockcheckFilename) throw new Error('Found no stockcheck JS file.')
-
-	let stockcheckJs = await (
-		await fetch(
-			`https://www.ikea.com/${countryData.urlCode}/products/javascripts/${stockcheckFilename}`
+	if (country.cantCheckAutomatically) {
+		console.log(
+			`${percentage}% complete  \tskipping stores for ${
+				country.abbrv ?? country.name
+			} (can't check automatically)`
 		)
-	).text()
-	let allStoresJson = stockcheckJs.match(/allStores=(\[.*?\])/)[1]
-	let stores = JSON6.parse(allStoresJson).map(e => {
+		continue
+	}
+
+	let storesResp = await fetch(
+		`https://www.ikea.com/${country.urlCode}/meta-data/navigation/stores-detailed.json`
+	)
+	let stores = await storesResp.json()
+
+	ikeaData[i].stores = stores.map(e => {
 		return {
-			value: e.value,
-			name: e.name,
-			address: e.storeAddress.address,
-			displayAddress: e.storeAddress.displayAddress
+			value: e.id,
+			name: e.displayName,
+			address: e.address.street,
+			displayAddress: e.address.displayAddress
 		}
 	})
 
-	return {
-		...countryData,
-		itemUrls,
-		stores
-	}
-}
-
-async function start() {
-	await Promise.all(
-		ikeaData.map((e, i) => {
-			return (async () => {
-				ikeaData[i] = await getStoresByCountry(ikeaData[i])
-			})()
-		})
+	console.log(
+		`${percentage}% complete  \tfinished retrieving stores for ${
+			country.abbrv ?? country.name
+		}`
 	)
-	ikeaData.sort((a, b) => a.name.localeCompare(b.name))
-	let storeDataJs = `export default ${JSON.stringify(ikeaData)}`
-	await fs.promises.writeFile('src/lib/store-data.js', storeDataJs)
 }
 
-start()
+console.log(`Sorting entries`)
+
+ikeaData.sort((a, b) => a.name.localeCompare(b.name))
+
+console.log(`Complete, saving to file`)
+
+fs.promises.writeFile('src/lib/store-data.js', 'export default ' + JSON.stringify(ikeaData))
+
+console.log(`Success`)
