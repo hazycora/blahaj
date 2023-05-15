@@ -550,6 +550,73 @@ export let ikeaData = [
 		apiType: 2
 	},
 	{
+		name: 'Iceland',
+		emoji: '🇮🇸',
+		itemUrls: {
+			original:
+				'https://www.ikea.is/en/products/baby-children/play/soft-toys/blahaj-soft-toy-art-30373588',
+			baby: 'https://www.ikea.is/en/products/christmas/gift-ideas/gift-ideas/blahaj-soft-toy-art-20540663'
+		},
+		apiType: 3,
+	},
+	{
+		name: 'Indonesia',
+		emoji: '🇮🇩',
+		itemUrls: {
+			original:
+				'https://www.ikea.co.id/en/products/children-play/comfort-toys/blahaj-art-10373589',
+			baby: 'https://www.ikea.co.id/en/products/children-play/comfort-toys/blahaj-art-00540664'
+		},
+		apiType: 3
+	},
+	{
+		name: 'Hong Kong',
+		emoji: '🇭🇰',
+		itemUrls: {
+			original:
+				'https://www.ikea.com.hk/en/products/childrens-toys-play-and-learn/soft-toys/blahaj-art-10373589',
+			baby: 'https://www.ikea.com.hk/en/products/childrens-toys-play-and-learn/soft-toys/blahaj-art-00540664'
+		},
+		apiType: 3
+	},
+	{
+		name: 'Puerto Rico',
+		emoji: '🇵🇷',
+		ikeaOrigin: 'https://www.ikea.pr/puertorico',
+		itemUrls: {
+			original:
+				'https://www.ikea.pr/puertorico/en/pd/blahaj-soft-toy-art-90373590',
+			baby: 'https://www.ikea.pr/puertorico/en/pd/blahaj-soft-toy-art-70540665'
+		},
+		itemIds: {
+			original: '90373590',
+			baby: '70540665'
+		},
+		apiType: 4,
+		cantCheckUrls: true,
+		cantCheckAutomatically: true,
+		cantCheckAutomaticallyMessage:
+			"Puerto Rico's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
+	},
+	{
+		name: 'Dominican Republic',
+		emoji: '🇩🇴',
+		ikeaOrigin: 'https://www.ikea.com.do',
+		itemUrls: {
+			original: 'https://www.ikea.com.do/en/pd/blahaj-soft-toy-art-90373590',
+			baby: 'https://www.ikea.com.do/en/pd/blahaj-soft-toy-art-70540665'
+		},
+		itemIds: {
+			original: '90373590',
+			baby: '70540665'
+		},
+		apiType: 4,
+		cantCheckUrls: true,
+		cantCheckAutomatically: true,
+		cantCheckAutomaticallyMessage:
+			"The Dominican Republic's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
+	},
+	{
 		name: 'Ukraine',
 		emoji: '🇺🇦',
 		countryCode: 'ua',
@@ -558,32 +625,6 @@ export let ikeaData = [
 		cantCheckUrls: true,
 		cantCheckAutomatically: true,
 		cantCheckAutomaticallyMessage: 'Ukraine seems to not sell BLÅHAJ.'
-	},
-	{
-		name: 'Puerto Rico',
-		emoji: '🇵🇷',
-		itemUrls: {
-			original:
-				'https://www.ikea.pr/puertorico/en/pd/blahaj-soft-toy-art-90373590',
-			baby: 'https://www.ikea.pr/puertorico/en/pd/blahaj-soft-toy-art-70540665'
-		},
-		cantCheckUrls: true,
-		cantCheckAutomatically: true,
-		cantCheckAutomaticallyMessage:
-			"Puerto Rico's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
-	},
-	{
-		name: 'Iceland',
-		emoji: '🇮🇸',
-		itemUrls: {
-			original:
-				'https://www.ikea.is/en/products/baby-children/play/soft-toys/blahaj-soft-toy-art-30373588',
-			baby: 'https://www.ikea.is/en/products/christmas/gift-ideas/gift-ideas/blahaj-soft-toy-art-20540663'
-		},
-		cantCheckUrls: true,
-		cantCheckAutomatically: true,
-		cantCheckAutomaticallyMessage:
-			"Iceland's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
 	},
 	{
 		name: 'Turkey',
@@ -598,18 +639,6 @@ export let ikeaData = [
 			"Turkey's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
 	},
 	{
-		name: 'Dominican Republic',
-		emoji: '🇩🇴',
-		itemUrls: {
-			original: 'https://www.ikea.com.do/en/pd/blahaj-soft-toy-art-90373590',
-			baby: 'https://www.ikea.com.do/en/pd/blahaj-soft-toy-art-70540665'
-		},
-		cantCheckUrls: true,
-		cantCheckAutomatically: true,
-		cantCheckAutomaticallyMessage:
-			"The Dominican Republic's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
-	},
-	{
 		name: 'Taiwan',
 		emoji: '🇹🇼',
 		itemUrls: {
@@ -621,32 +650,6 @@ export let ikeaData = [
 		cantCheckAutomatically: true,
 		cantCheckAutomaticallyMessage:
 			"Taiwan's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
-	},
-	{
-		name: 'Indonesia',
-		emoji: '🇮🇩',
-		itemUrls: {
-			original:
-				'https://www.ikea.co.id/en/products/children-play/comfort-toys/blahaj-art-10373589',
-			baby: 'https://www.ikea.co.id/en/products/children-play/comfort-toys/blahaj-art-00540664'
-		},
-		cantCheckUrls: true,
-		cantCheckAutomatically: true,
-		cantCheckAutomaticallyMessage:
-			"Indonesia's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
-	},
-	{
-		name: 'Hong Kong',
-		emoji: '🇭🇰',
-		itemUrls: {
-			original:
-				'https://www.ikea.com.hk/en/products/childrens-toys-play-and-learn/soft-toys/blahaj-art-10373589',
-			baby: 'https://www.ikea.com.hk/en/products/childrens-toys-play-and-learn/soft-toys/blahaj-art-00540664'
-		},
-		cantCheckUrls: true,
-		cantCheckAutomatically: true,
-		cantCheckAutomaticallyMessage:
-			"Hong Kong's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
 	},
 	{
 		name: 'China',

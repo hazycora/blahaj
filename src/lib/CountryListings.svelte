@@ -148,6 +148,25 @@
 					}
 				})
 			}
+			case 3: {
+				const domParser = new DOMParser()
+				let listingXml = await (
+					await fetchCors(countryData.itemUrls[itemType])
+				).text()
+				const xmlDoc = domParser.parseFromString(listingXml, 'text/html')
+
+				return [
+					{
+						store: {
+							name: 'Online purchase'
+						},
+						quantity:
+							parseInt(
+								xmlDoc.querySelector('input.val')?.getAttribute('max')
+							) || 0
+					}
+				]
+			}
 		}
 	}
 
