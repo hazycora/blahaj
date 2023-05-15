@@ -140,6 +140,7 @@ let ikeaData = [
 		countryCode: 'es',
 		urlCode: 'es/es',
 		itemIds: {
+			original: '30373588',
 			baby: '20540663'
 		}
 	},
@@ -298,6 +299,7 @@ let ikeaData = [
 		countryCode: 'qa',
 		urlCode: 'qa/en',
 		itemIds: {
+			original: '80556378',
 			baby: '30540667'
 		}
 	},
@@ -357,6 +359,7 @@ let ikeaData = [
 		countryCode: 'ro',
 		urlCode: 'ro/ro',
 		itemIds: {
+			original: '30373588',
 			baby: '20540663'
 		}
 	},
@@ -416,6 +419,7 @@ let ikeaData = [
 		countryCode: 'bh',
 		urlCode: 'bh/en',
 		itemIds: {
+			original: '80556378',
 			baby: '30540667'
 		}
 	},
@@ -454,10 +458,9 @@ let ikeaData = [
 		emoji: '🇨🇱',
 		countryCode: 'cl',
 		urlCode: 'cl/es',
-		unavailable: true,
-		cantCheckUrls: true,
-		cantCheckAutomatically: true,
-		cantCheckAutomaticallyMessage: 'Chile seems to not sell BLÅHAJ.'
+		itemIds: {
+			baby: '20540663'
+		}
 	},
 	{
 		name: 'Ukraine',
@@ -512,6 +515,7 @@ let ikeaData = [
 		name: 'Cyprus',
 		emoji: '🇨🇾',
 		itemUrls: {
+			original: 'https://www.ikea.com.cy/en/products/baby-children/children-3-7/toys-play-3-7/soft-toys/blahaj-soft-toy/30373588',
 			baby: 'https://www.ikea.com.cy/en/products/baby-children/baby/baby-toys/12-months/blahaj-soft-toy-baby-shark-55-cm/20540663'
 		},
 		cantCheckUrls: true,
@@ -573,6 +577,7 @@ let ikeaData = [
 		name: 'Bulgaria',
 		emoji: '🇧🇬',
 		itemUrls: {
+			original: 'https://www.ikea.bg/products/baby-children/children-3-7/toys-play/soft-toys/blahaj-plyushena-igrachka-akula/30373588',
 			baby: 'https://www.ikea.bg/products/baby-children/children-3-7/toys-play/soft-toys/blahaj-plyushena-igrachka-malka-akula-55-sm/20540663'
 		},
 		cantCheckUrls: true,
@@ -610,6 +615,7 @@ let ikeaData = [
 		name: 'Greece',
 		emoji: '🇬🇷',
 		itemUrls: {
+			original: 'https://www.ikea.gr/en/products/baby-children/children-3-7/toys-play-3-7/soft-toys/blahaj-soft-toy/30373588',
 			baby: 'https://www.ikea.gr/en/products/baby-children/baby/baby-toys/12-months/blahaj-soft-toy-baby-shark-55-cm/20540663'
 		},
 		cantCheckUrls: true,
