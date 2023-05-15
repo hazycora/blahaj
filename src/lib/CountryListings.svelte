@@ -116,9 +116,6 @@
 					})
 				).text()
 				const xmlDoc = domParser.parseFromString(listingXml, 'text/html')
-				const city = xmlDoc
-					.querySelector('h6')
-					.textContent.match(/.*?IKEA (.*?)$/)?.[1]
 				let quantityMessage = xmlDoc
 					.querySelector('p:not([class])')
 					?.textContent.trim()

@@ -6,7 +6,7 @@ import { ikeaData } from './basic-store-data.js'
 for (let [i, country] of Object.entries(ikeaData)) {
 	const percentage = (((parseInt(i) + 1) / ikeaData.length) * 100).toFixed(2)
 
-	if ((country.apiType??0) != 0 || country.cantCheckUrls) {
+	if ((country.apiType ?? 0) != 0 || country.cantCheckUrls) {
 		console.log(
 			`${percentage}% complete  \tskipping all checks for ${
 				country.abbrv ?? country.name
@@ -74,6 +74,9 @@ ikeaData.sort((a, b) => a.name.localeCompare(b.name))
 
 console.log(`Complete, saving to file`)
 
-fs.promises.writeFile('src/lib/store-data.js', 'export default ' + JSON.stringify(ikeaData))
+fs.promises.writeFile(
+	'src/lib/store-data.js',
+	'export default ' + JSON.stringify(ikeaData)
+)
 
 console.log(`Success`)

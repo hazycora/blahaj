@@ -463,7 +463,8 @@ export let ikeaData = [
 		name: 'Cyprus',
 		emoji: '🇨🇾',
 		itemUrls: {
-			original: 'https://www.ikea.com.cy/en/products/baby-children/children-3-7/toys-play-3-7/soft-toys/blahaj-soft-toy/30373588',
+			original:
+				'https://www.ikea.com.cy/en/products/baby-children/children-3-7/toys-play-3-7/soft-toys/blahaj-soft-toy/30373588',
 			baby: 'https://www.ikea.com.cy/en/products/baby-children/baby/baby-toys/12-months/blahaj-soft-toy-baby-shark-55-cm/20540663'
 		},
 		itemIds: {
@@ -477,7 +478,8 @@ export let ikeaData = [
 		name: 'Bulgaria',
 		emoji: '🇧🇬',
 		itemUrls: {
-			original: 'https://www.ikea.bg/products/baby-children/children-3-7/toys-play/soft-toys/blahaj-plyushena-igrachka-akula/30373588',
+			original:
+				'https://www.ikea.bg/products/baby-children/children-3-7/toys-play/soft-toys/blahaj-plyushena-igrachka-akula/30373588',
 			baby: 'https://www.ikea.bg/products/baby-children/children-3-7/toys-play/soft-toys/blahaj-plyushena-igrachka-malka-akula-55-sm/20540663'
 		},
 		itemIds: {
@@ -491,7 +493,8 @@ export let ikeaData = [
 		name: 'Greece',
 		emoji: '🇬🇷',
 		itemUrls: {
-			original: 'https://www.ikea.gr/en/products/baby-children/children-3-7/toys-play-3-7/soft-toys/blahaj-soft-toy/30373588',
+			original:
+				'https://www.ikea.gr/en/products/baby-children/children-3-7/toys-play-3-7/soft-toys/blahaj-soft-toy/30373588',
 			baby: 'https://www.ikea.gr/en/products/baby-children/baby/baby-toys/12-months/blahaj-soft-toy-baby-shark-55-cm/20540663'
 		},
 		itemIds: {
