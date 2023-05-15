@@ -8,7 +8,7 @@
 	let loaded = false
 	let isOpen = false
 
-	let available = typeof countryData.itemIds?.[itemType] != 'undefined'
+	let available = typeof countryData.itemUrls?.[itemType] != 'undefined'
 
 	function parseStock(availability) {
 		let store = countryData.stores.find(e => {

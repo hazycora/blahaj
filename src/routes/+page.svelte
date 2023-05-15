@@ -23,7 +23,7 @@
 	}
 
 	function filterCountry(countryData) {
-		let available = typeof countryData.itemIds?.[blahajType] != 'undefined'
+		let available = typeof countryData.itemUrls?.[blahajType] != 'undefined'
 		if (countryFilter == '')
 			return {
 				...countryData,
