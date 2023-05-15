@@ -75,6 +75,8 @@
 						{:else}
 							<p>No stores with {itemType} BLÅHAJ in stock 💔</p>
 						{/if}
+					{:catch err}
+						<p class="error">Error: {err.message}</p>
 					{/await}
 				{/if}
 			{/if}

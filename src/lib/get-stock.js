@@ -5,12 +5,15 @@ async function fetchIkeaApi(path) {
 			'X-Client-ID': 'b6c117e5-ae61-4ef5-b4cc-e0b1e37f0631'
 		}
 	})
+	if (!req.ok) throw new Error('Request failed')
 	return await req.json()
 }
 
 async function fetchCors(url, options) {
 	url = `https://cors.besties.house/?url=${encodeURIComponent(url)}`
-	return fetch(url, options)
+	let response = await fetch(url, options)
+	if (!response.ok) throw new Error('Request failed')
+	return response
 }
 
 function parseStock(availability, countryData) {

@@ -9,6 +9,8 @@
 	--fg: white;
 	--accent-clr: #a87dff;
 	--link: #a87dff;
+	--positive: #4eff93;
+	--negative: #c83867;
 
 	--font-family: 'Shippori Antique B1', sans-serif;
 }
@@ -306,11 +308,11 @@ button {
 }
 
 .listing.positive h3 {
-	color: #4eff93;
+	color: var(--positive);
 }
 
 .listing.negative h3 {
-	color: #c83867;
+	color: var(--negative);
 }
 
 .address {
@@ -327,4 +329,8 @@ button {
 	margin-top: 1rem;
 	padding: 1rem;
 	text-align: center;
+}
+
+.error {
+	color: var(--negative)
 }
