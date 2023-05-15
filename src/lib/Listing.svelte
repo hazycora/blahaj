@@ -2,12 +2,17 @@
 	import { fly } from 'svelte/transition'
 	export let listing
 	export let delay = 0
-	let positive = listing.quantity && listing.quantity > 0
+	let positive =
+		listing.quantity && (listing.quantity > 0 || listing.quantity == -2)
 	let restockRange
 	let message = listing.message
 	if (!message) {
 		if (listing.quantity === 1) {
 			message = `${listing.quantity} shark`
+		} else if (listing.quantity === -2) {
+			message = `BLÅHAJ available (quantity uncertain)`
+		} else if (listing.quantity === -1) {
+			message = `BLÅHAJ unavailable`
 		} else {
 			message = `${listing.quantity} sharks`
 		}

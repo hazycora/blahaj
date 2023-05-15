@@ -502,14 +502,34 @@ export let ikeaData = [
 		apiType: 1
 	},
 	{
-		name: 'Ukraine',
-		emoji: '🇺🇦',
-		countryCode: 'ua',
-		urlCode: 'ua/uk',
-		unavailable: true,
-		cantCheckUrls: true,
-		cantCheckAutomatically: true,
-		cantCheckAutomaticallyMessage: 'Ukraine seems to not sell BLÅHAJ.'
+		name: 'Latvia',
+		emoji: '🇱🇻',
+		itemUrls: {
+			original:
+				'https://www.ikea.lv/en/products/children-s-room/children-3-7/comfort-toys/blahaj-soft-toy-art-30373588',
+			baby: 'https://www.ikea.lv/en/products/children-s-room/children-3-7/comfort-toys/blahaj-soft-toy-art-20540663'
+		},
+		itemIds: {
+			original: '30373588',
+			baby: '20540663'
+		},
+		ikeaOrigin: 'https://www.ikea.lv',
+		apiType: 2
+	},
+	{
+		name: 'Estonia',
+		emoji: '🇪🇪',
+		itemUrls: {
+			original:
+				'https://www.ikea.ee/en/products/children-s-room/baby/comfort-toys/blahaj-soft-toy-art-30373588',
+			baby: 'https://www.ikea.ee/en/products/children-s-room/baby/comfort-toys/blahaj-soft-toy-art-20540663'
+		},
+		itemIds: {
+			original: '30373588',
+			baby: '20540663'
+		},
+		ikeaOrigin: 'https://www.ikea.ee',
+		apiType: 2
 	},
 	{
 		name: 'Lithuania',
@@ -519,10 +539,22 @@ export let ikeaData = [
 				'https://www.ikea.lt/en/products/children-s-room/for-babies/comfort-toys/blahaj-soft-toy-art-30373588',
 			baby: 'https://www.ikea.lt/en/products/children-s-room/for-babies/comfort-toys/blahaj-soft-toy-art-20540663'
 		},
+		itemIds: {
+			original: '30373588',
+			baby: '20540663'
+		},
+		ikeaOrigin: 'https://www.ikea.lt',
+		apiType: 2
+	},
+	{
+		name: 'Ukraine',
+		emoji: '🇺🇦',
+		countryCode: 'ua',
+		urlCode: 'ua/uk',
+		unavailable: true,
 		cantCheckUrls: true,
 		cantCheckAutomatically: true,
-		cantCheckAutomaticallyMessage:
-			"Lithuania's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
+		cantCheckAutomaticallyMessage: 'Ukraine seems to not sell BLÅHAJ.'
 	},
 	{
 		name: 'Puerto Rico',
@@ -549,32 +581,6 @@ export let ikeaData = [
 		cantCheckAutomatically: true,
 		cantCheckAutomaticallyMessage:
 			"Iceland's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
-	},
-	{
-		name: 'Latvia',
-		emoji: '🇱🇻',
-		itemUrls: {
-			original:
-				'https://www.ikea.lv/en/products/children-s-room/children-3-7/comfort-toys/blahaj-soft-toy-art-30373588',
-			baby: 'https://www.ikea.lv/en/products/children-s-room/children-3-7/comfort-toys/blahaj-soft-toy-art-20540663'
-		},
-		cantCheckUrls: true,
-		cantCheckAutomatically: true,
-		cantCheckAutomaticallyMessage:
-			"Latvia's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
-	},
-	{
-		name: 'Estonia',
-		emoji: '🇪🇪',
-		itemUrls: {
-			original:
-				'https://www.ikea.ee/en/products/children-s-room/baby/comfort-toys/blahaj-soft-toy-art-30373588',
-			baby: 'https://www.ikea.ee/en/products/children-s-room/baby/comfort-toys/blahaj-soft-toy-art-20540663'
-		},
-		cantCheckUrls: true,
-		cantCheckAutomatically: true,
-		cantCheckAutomaticallyMessage:
-			"Estonia's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
 	},
 	{
 		name: 'Turkey',

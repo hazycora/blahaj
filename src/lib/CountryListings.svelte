@@ -104,6 +104,62 @@
 					}
 				})
 			}
+			case 2: {
+				const domParser = new DOMParser()
+				let listingXml = await (
+					await fetchCors(`${countryData.ikeaOrigin}/en/products/sidenavPup`, {
+						headers: {
+							'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+						},
+						body: `id=${countryData.itemIds[itemType]}`,
+						method: 'POST'
+					})
+				).text()
+				const xmlDoc = domParser.parseFromString(listingXml, 'text/html')
+				const city = xmlDoc
+					.querySelector('h6')
+					.textContent.match(/.*?IKEA (.*?)$/)?.[1]
+				let quantityMessage = xmlDoc
+					.querySelector('p:not([class])')
+					?.textContent.trim()
+				const stocks = [
+					...xmlDoc.querySelectorAll('.message > .stock-icon + p')
+				].map(e => {
+					const textContent = e.textContent.trim()
+					if (
+						textContent.startsWith('Available') ||
+						textContent == 'In stock'
+					) {
+						return -2
+					} else if (textContent.startsWith('Not available')) {
+						return -1
+					} else {
+						return parseInt(quantityMessage)
+					}
+				})
+				return [
+					...xmlDoc.querySelectorAll(
+						'.col-12:first-child .display-7, .display-8'
+					)
+				].map((e, i) => {
+					const city = e.textContent.match(/.*?IKEA (.*?)$/)?.[1]
+					return {
+						store: {
+							name: city
+						},
+						quantity: stocks[i]
+					}
+				})
+				// console.log(locations)
+				// let quantity
+				// if (quantityMessage.startsWith('Available')) {
+				// 	quantity = -2
+				// } else if (quantityMessage.startsWith('Not available')) {
+				// 	quantity = -1
+				// } else {
+				// 	quantity = parseInt(quantityMessage)
+				// }
+			}
 		}
 	}
 
