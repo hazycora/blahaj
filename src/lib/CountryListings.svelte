@@ -57,17 +57,54 @@
 		return await req.json()
 	}
 
+	async function fetchCors(url, options) {
+		url = `https://cors.besties.house/?url=${encodeURIComponent(url)}`
+		return fetch(url, options)
+	}
+
 	async function loadContent() {
 		if (countryData.cantCheckAutomatically) return
-		let listingData = await fetchIkeaApi(
-			`cia/availabilities/ru/${countryData.countryCode}?itemNos=${countryData.itemIds[itemType]}&expand=StoresList,Restocks,SalesLocations`
-		)
-		let stocks = listingData.availabilities.map(e => parseStock(e))
-		return stocks
-			.sort((a, b) => {
-				return b.quantity - a.quantity
-			})
-			.filter(e => !e.err)
+		switch (countryData.apiType ?? 0) {
+			case 0: {
+				let listingData = await fetchIkeaApi(
+					`cia/availabilities/ru/${countryData.countryCode}?itemNos=${countryData.itemIds[itemType]}&expand=StoresList,Restocks,SalesLocations`
+				)
+				let stocks = listingData.availabilities.map(e => parseStock(e))
+				return stocks
+					.sort((a, b) => {
+						return b.quantity - a.quantity
+					})
+					.filter(e => !e.err)
+			}
+			case 1: {
+				const domParser = new DOMParser()
+				let listingXml = await (
+					await fetchCors(
+						`${countryData.ikeaOrigin}/ajax/Atcom.Sites.Ikea.Components.ProductDetail.StoresAvailability/?sku=${countryData.itemIds[itemType]}`
+					)
+				).text()
+				const xmlDoc = domParser.parseFromString(listingXml, 'text/html')
+				let storeList = [...xmlDoc.querySelectorAll('ul.available-stores > li')]
+				return storeList.map(e => {
+					let quantity = e
+						.getAttribute('data-message')
+						.match(/.*?: <b>(.*?)<\/b>/)[1]
+						?.trim()
+					if (!quantity ?? quantity == '') {
+						quantity = 0
+					} else {
+						quantity = parseInt(quantity)
+					}
+					return {
+						store: {
+							value: e.getAttribute('data-value'),
+							name: e.getAttribute('data-text').replace(/^IKEA /, '')
+						},
+						quantity
+					}
+				})
+			}
+		}
 	}
 
 	function onClick() {
@@ -125,11 +162,15 @@
 					{#await listings}
 						<p>loading...</p>
 					{:then listings}
-						<ul>
-							{#each listings as listing, i}
-								<Listing {listing} delay={(400 / listings.length) * i} />
-							{/each}
-						</ul>
+						{#if listings.length > 0}
+							<ul>
+								{#each listings as listing, i}
+									<Listing {listing} delay={(400 / listings.length) * i} />
+								{/each}
+							</ul>
+						{:else}
+							<p>No stores with {itemType} BLÅHAJ in stock 💔</p>
+						{/if}
 					{/await}
 				{/if}
 			{/if}

@@ -36,7 +36,9 @@
 	class:negative={!positive}
 >
 	<h3>{listing.store.name}</h3>
-	<p class="address">{listing.store.address}</p>
+	{#if listing.store.address}
+		<p class="address">{listing.store.address}</p>
+	{/if}
 	<p class="quantity">{message}</p>
 	{#if listing.nextRestock}
 		<p class="restock-date">

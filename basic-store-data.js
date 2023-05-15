@@ -460,6 +460,48 @@ export let ikeaData = [
 		}
 	},
 	{
+		name: 'Cyprus',
+		emoji: '🇨🇾',
+		itemUrls: {
+			original: 'https://www.ikea.com.cy/en/products/baby-children/children-3-7/toys-play-3-7/soft-toys/blahaj-soft-toy/30373588',
+			baby: 'https://www.ikea.com.cy/en/products/baby-children/baby/baby-toys/12-months/blahaj-soft-toy-baby-shark-55-cm/20540663'
+		},
+		itemIds: {
+			original: '30373588',
+			baby: '20540663'
+		},
+		ikeaOrigin: 'https://www.ikea.com.cy',
+		apiType: 1
+	},
+	{
+		name: 'Bulgaria',
+		emoji: '🇧🇬',
+		itemUrls: {
+			original: 'https://www.ikea.bg/products/baby-children/children-3-7/toys-play/soft-toys/blahaj-plyushena-igrachka-akula/30373588',
+			baby: 'https://www.ikea.bg/products/baby-children/children-3-7/toys-play/soft-toys/blahaj-plyushena-igrachka-malka-akula-55-sm/20540663'
+		},
+		itemIds: {
+			original: '30373588',
+			baby: '20540663'
+		},
+		ikeaOrigin: 'https://www.ikea.bg',
+		apiType: 1
+	},
+	{
+		name: 'Greece',
+		emoji: '🇬🇷',
+		itemUrls: {
+			original: 'https://www.ikea.gr/en/products/baby-children/children-3-7/toys-play-3-7/soft-toys/blahaj-soft-toy/30373588',
+			baby: 'https://www.ikea.gr/en/products/baby-children/baby/baby-toys/12-months/blahaj-soft-toy-baby-shark-55-cm/20540663'
+		},
+		itemIds: {
+			original: '30373588',
+			baby: '20540663'
+		},
+		ikeaOrigin: 'https://www.ikea.gr',
+		apiType: 1
+	},
+	{
 		name: 'Ukraine',
 		emoji: '🇺🇦',
 		countryCode: 'ua',
@@ -507,18 +549,6 @@ export let ikeaData = [
 		cantCheckAutomatically: true,
 		cantCheckAutomaticallyMessage:
 			"Iceland's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
-	},
-	{
-		name: 'Cyprus',
-		emoji: '🇨🇾',
-		itemUrls: {
-			original: 'https://www.ikea.com.cy/en/products/baby-children/children-3-7/toys-play-3-7/soft-toys/blahaj-soft-toy/30373588',
-			baby: 'https://www.ikea.com.cy/en/products/baby-children/baby/baby-toys/12-months/blahaj-soft-toy-baby-shark-55-cm/20540663'
-		},
-		cantCheckUrls: true,
-		cantCheckAutomatically: true,
-		cantCheckAutomaticallyMessage:
-			"Cyprus's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
 	},
 	{
 		name: 'Latvia',
@@ -571,18 +601,6 @@ export let ikeaData = [
 			"The Dominican Republic's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
 	},
 	{
-		name: 'Bulgaria',
-		emoji: '🇧🇬',
-		itemUrls: {
-			original: 'https://www.ikea.bg/products/baby-children/children-3-7/toys-play/soft-toys/blahaj-plyushena-igrachka-akula/30373588',
-			baby: 'https://www.ikea.bg/products/baby-children/children-3-7/toys-play/soft-toys/blahaj-plyushena-igrachka-malka-akula-55-sm/20540663'
-		},
-		cantCheckUrls: true,
-		cantCheckAutomatically: true,
-		cantCheckAutomaticallyMessage:
-			"Bulgaria's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
-	},
-	{
 		name: 'Taiwan',
 		emoji: '🇹🇼',
 		itemUrls: {
@@ -607,18 +625,6 @@ export let ikeaData = [
 		cantCheckAutomatically: true,
 		cantCheckAutomaticallyMessage:
 			"Indonesia's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
-	},
-	{
-		name: 'Greece',
-		emoji: '🇬🇷',
-		itemUrls: {
-			original: 'https://www.ikea.gr/en/products/baby-children/children-3-7/toys-play-3-7/soft-toys/blahaj-soft-toy/30373588',
-			baby: 'https://www.ikea.gr/en/products/baby-children/baby/baby-toys/12-months/blahaj-soft-toy-baby-shark-55-cm/20540663'
-		},
-		cantCheckUrls: true,
-		cantCheckAutomatically: true,
-		cantCheckAutomaticallyMessage:
-			"Greece's IKEA website uses a different codebase, so this site cannot check the BLÅHAJ stock automatically at the moment. Check on their site at the link below!"
 	},
 	{
 		name: 'Hong Kong',

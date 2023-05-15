@@ -1,12 +1,12 @@
 import fs from 'fs'
 import fetch from 'node-fetch'
 
-import { ikeaData } from './basic-store-data'
+import { ikeaData } from './basic-store-data.js'
 
 for (let [i, country] of Object.entries(ikeaData)) {
 	const percentage = (((parseInt(i) + 1) / ikeaData.length) * 100).toFixed(2)
 
-	if (country.cantCheckUrls) {
+	if ((country.apiType??0) != 0 || country.cantCheckUrls) {
 		console.log(
 			`${percentage}% complete  \tskipping all checks for ${
 				country.abbrv ?? country.name
