@@ -7,14 +7,15 @@
 	let blahajType = 'original'
 	let countryFilter = ''
 
-	let filteredCountries = ikeaData
-
 	function setType(newType) {
 		blahajType = newType
 	}
 
+	let filteredCountries
+
 	$: {
 		countryFilter = countryFilter
+		blahajType = blahajType
 		filteredCountries = ikeaData
 			.map(filterCountry)
 			.sort((a, b) => b.points - a.points)
@@ -22,10 +23,11 @@
 	}
 
 	function filterCountry(countryData) {
+		let available = typeof countryData.itemIds?.[blahajType] != 'undefined'
 		if (countryFilter == '')
 			return {
 				...countryData,
-				points: 10
+				points: available ? (!countryData.cantCheckAutomatically ? 15 : 12) : 10
 			}
 		let countryFilterKeywords = countryFilter.toLowerCase().split(/\s/gm)
 		let points = 0
@@ -131,13 +133,13 @@
 		<div class="listings-wrapper">
 			{#if blahajType === 'original'}
 				<div class="listings" transition:fly={{ x: -800, duration: 400 }}>
-					{#each filteredCountries.filter(e => e.itemIds?.original) as countryData}
+					{#each filteredCountries as countryData}
 						<CountryListings {countryData} itemType="original" />
 					{/each}
 				</div>
 			{:else if blahajType === 'baby'}
 				<div class="listings" transition:fly={{ x: 800, duration: 400 }}>
-					{#each filteredCountries.filter(e => e.itemIds?.baby) as countryData}
+					{#each filteredCountries as countryData}
 						<CountryListings {countryData} itemType="baby" />
 					{/each}
 				</div>
