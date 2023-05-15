@@ -134,7 +134,7 @@
 					} else if (textContent.startsWith('Not available')) {
 						return -1
 					} else {
-						return parseInt(quantityMessage)
+						return parseInt(quantityMessage) || -1
 					}
 				})
 				return [
