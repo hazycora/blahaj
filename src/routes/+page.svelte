@@ -49,7 +49,7 @@
 	<div class="hero">
 		<div class="hero-message">
 			<h1>BLÅHAJ Radar</h1>
-			<p>View BLÅHAJ listings in various countries</p>
+			<p>View BLÅHAJ stock in various countries</p>
 		</div>
 		<img class="hero-cover" src="{base}/hero.jpg" alt="BLÅHAJ" />
 	</div>

@@ -1,6 +1,6 @@
 # BLÅHAJ Radar
 
-Website that displays listings for BLÅHAJ in various countries.
+Website that displays stock for BLÅHAJ in various countries.
 
 [View website](https://hazy.gay/blahaj)
 
