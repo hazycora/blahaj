@@ -150,15 +150,6 @@
 						quantity: stocks[i]
 					}
 				})
-				// console.log(locations)
-				// let quantity
-				// if (quantityMessage.startsWith('Available')) {
-				// 	quantity = -2
-				// } else if (quantityMessage.startsWith('Not available')) {
-				// 	quantity = -1
-				// } else {
-				// 	quantity = parseInt(quantityMessage)
-				// }
 			}
 		}
 	}
