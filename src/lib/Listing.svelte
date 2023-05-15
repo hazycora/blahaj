@@ -8,13 +8,13 @@
 	let message = listing.message
 	if (!message) {
 		if (listing.quantity === 1) {
-			message = `${listing.quantity} shark`
+			message = `${listing.quantity} blåhaj`
 		} else if (listing.quantity === -2) {
 			message = `BLÅHAJ available (quantity uncertain)`
 		} else if (listing.quantity === -1) {
 			message = `BLÅHAJ unavailable`
 		} else {
-			message = `${listing.quantity} sharks`
+			message = `${listing.quantity} blåhajar`
 		}
 	}
 
@@ -47,7 +47,7 @@
 	<p class="quantity">{message}</p>
 	{#if listing.nextRestock}
 		<p class="restock-date">
-			Restocking {listing.nextRestock.quantity} sharks on {restockRange}
+			Restocking {listing.nextRestock.quantity} blåhajar on {restockRange}
 		</p>
 	{/if}
 </div>
